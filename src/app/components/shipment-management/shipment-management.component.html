@@ -1,0 +1,54 @@
+<div>
+  <h1>Manage Shipments</h1>
+  <form [formGroup]="shipmentForm" (ngSubmit)="submitShipment()">
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="letter">Letter</mat-option>
+        <mat-option value="package">Package</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Weight</mat-label>
+      <mat-select matInput formControlName="weight">
+        <mat-option value="Less than 1kg">Less than 1kg</mat-option>
+        <mat-option value="Between 1kg and 5kg">Between 1kg and 5kg</mat-option>
+        <mat-option value="More than 5kg">More than 5kg</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="origin">Origin</mat-option>
+        <mat-option value="destination">Destination</mat-option>
+        <mat-option value="delivered">Delivered</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Origin ZIP Code Selection -->
+    <mat-form-field>
+      <mat-label>Origin ZIP Code</mat-label>
+      <mat-select formControlName="origin_zip_code">
+        <mat-option *ngFor="let zip of zipCodes" [value]="zip">
+          {{ zip }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Destination ZIP Code Selection -->
+    <mat-form-field>
+      <mat-label>Destination ZIP Code</mat-label>
+      <mat-select formControlName="destination_zip_code">
+        <mat-option *ngFor="let zip of zipCodes" [value]="zip">
+          {{ zip }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Submit Shipment
+    </button>
+  </form>
+</div>
